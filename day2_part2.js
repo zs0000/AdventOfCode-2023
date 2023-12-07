@@ -18,7 +18,7 @@ function parseGames(games){
     var total = 0
     var gameID = 0
     for(var i = 0; i<games.length;i++){
-        var colLoc = games[i].indexOf(":") +2
+        var colLoc = games[i].indexOf(":") 
         gameID++
         
         total+= parseGame(games[i].slice(colLoc))
