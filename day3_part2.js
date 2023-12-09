@@ -34,17 +34,7 @@ function traverseMap(map){
         
   
         for(var col = 0; col< map[row].length; col++){
-            if(col === map[row].length-1 && parseInt(str) >=0 && boolArr.includes('true')){
-                if(parseInt(map[row][col]) >=0) str += map[row][col]
-                console.log('start total',total, row)   
-                val = parseInt(str)
-                vals.push(val)
-                total+=val
-                val = 0
-                str=''
-                boolArr=[]
-                
-            }
+            
             var up = row === 0 ? 0 : map[row-1][col]
             var down = row === map.length-1 ? 0 : map[row+1][col]
             var left = col === 0 ? 0 : map[row][col-1]
@@ -92,8 +82,8 @@ function traverseMap(map){
                     val = 0
                 }
             }
-
-
+              
+           
             // if not top or bottom row
             if(map[row][col] === "."){
             
@@ -103,43 +93,54 @@ function traverseMap(map){
                 if(col > 0 && col < map[row].length-1){
                   if(isSymbol(up) || isSymbol(down) || isSymbol(left) || isSymbol(right) || isSymbol(upLeft) || isSymbol(upRight) || isSymbol(downLeft) || isSymbol(downRight)){
                       boolArr.push('true')
+                      
                   }
                   
                     // starting column
                 } else if(col === 0){
                     if (isSymbol(up) || isSymbol(down) || isSymbol(right) || isSymbol(upRight) || isSymbol(downRight)){
-                        boolArr.push('true')                  
+                        boolArr.push('true')
+                    
                     }
 
                     // end column
                 } else if (col === map[row].length-1){
                     if(isSymbol(up) || isSymbol(down) || isSymbol(left) || isSymbol(upLeft) || isSymbol(downLeft)){
                         boolArr.push('true')
+                        
+                       
                     }
                     
-                }
+                } else{
 
+                }
                 // top row
             } else if( row ===0){
                 // if not starting or end column -- all middles - check all
                 if(col > 0 && col < map[row].length-1){
                   if(isSymbol(down) || isSymbol(left) || isSymbol(right) || isSymbol(downLeft) || isSymbol(downRight)){
+                
                     boolArr.push('true')
+                    
                     }
                   
                     // starting column
                 } else if(col ===0){
                     if (isSymbol(down) || isSymbol(right) || isSymbol(downRight)){
                         boolArr.push('true')
+                        
                     }
 
                     // end column
                 } else if (col === map[row].length-1){
                     if(isSymbol(down) || isSymbol(left) || isSymbol(downLeft)){
-                        boolArr.push('true') 
+                        boolArr.push('true')
+                       
                     }
                     
-                } 
+                } else{
+
+                }
 
                 //bottom row 
             } else if(row === map.length-1){
@@ -147,20 +148,25 @@ function traverseMap(map){
                 // if not starting or end column -- all middles - check all
                 if(col > 0 && col < map[row].length-1){
                   if(isSymbol(up) || isSymbol(left) || isSymbol(right) || isSymbol(upLeft) || isSymbol(upRight)){
-                      boolArr.push('true') 
+                      boolArr.push('true')
+                      
                   }
                   
                     // starting column
                 } else if(col === 0){
                     if (isSymbol(up) || isSymbol(right) || isSymbol(upRight)){
                         boolArr.push('true')
+
+                    
                     }
 
                     // end column
                 } else if (col === map[row].length-1){
                     if(isSymbol(up) || isSymbol(left) || isSymbol(upLeft)){
                         boolArr.push('true')
+                        
                     }
+                    
                 } 
             } 
             console.log('end total',total, row) 
